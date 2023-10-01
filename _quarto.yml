@@ -1,27 +1,25 @@
 project:
   type: book
-  output-dir: _book
-  
+  output-dir: docs
+
 book:
-  title: "Title of Next Bestseller"
-  author: "JJB"
-  description: | 
-    TBA
-  #cover-image: images/cover.png
-  site-url: https://tutorials.thecoatlessprofessor.com/quarto-book-template
-  repo-url: https://github.com/coatless-tutorials/quarto-book-template
-  repo-branch: main
-  repo-actions: [edit]
-  sharing: [twitter, facebook, linkedin]
+  title: "julia-book"
+  author: "Norah Jones"
+  date: "9/30/2023"
   chapters:
     - index.qmd
-    - part: my-first-book.qmd
-      chapters: 
-        - hello-world.qmd
-  appendices:
-    - appendix-notes.qmd
-    
+    - intro.qmd
+    - summary.qmd
+    - references.qmd
+
+bibliography: references.bib
+
 format:
-  html: 
+  html:
     theme: cosmo
-    code-link: true
+    code-copy: true
+
+  
+
+
+

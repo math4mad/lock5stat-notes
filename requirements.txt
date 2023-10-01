@@ -9,3 +9,4 @@ watermark>=2.4.3
 tqdm
 scikit-learn
 scipy
+julia>=1.9.0

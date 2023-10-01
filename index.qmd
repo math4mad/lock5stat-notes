@@ -1,23 +1,6 @@
+# Preface {.unnumbered}
 
+This is a Quarto book.
 
-## Welcome {.unnumbered}
+To learn more about Quarto books visit <https://quarto.org/docs/books>.
 
-Welcome splash page! Provide an overview of the book.
-
-Sample evaluation of R and Python in a side-by-side manner:
-
-::: {layout-ncol=2}
-#### R
-
-```{r}
-my_list = list(1, 2, 3)
-typeof(my_list)
-```
-
-#### Python
-
-```{python}
-my_list = [1, 2, 3]
-type(my_list)
-```
-:::
