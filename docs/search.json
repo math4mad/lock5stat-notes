@@ -2,7 +2,7 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "julia-book",
+    "title": "locks5notes",
     "section": "",
     "text": "Preface\nThis is a Quarto book.\nTo learn more about Quarto books visit https://quarto.org/docs/books."
   },
@@ -14,17 +14,52 @@
     "text": "This is a book created from markdown and executable code.\nSee Knuth (1984) for additional discussion of literate programming.\n\n @info \"this is test\"\n\n[ Info: this is test\n\n\n\n\n\n\nKnuth, Donald E. 1984. “Literate Programming.” Comput. J. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97."
   },
   {
-    "objectID": "summary.html",
-    "href": "summary.html",
-    "title": "2  Summary",
-    "section": "",
-    "text": "In summary, this book has no content whatsoever."
+    "objectID": "books/ch01/ch1.1.html#load-package",
+    "href": "books/ch01/ch1.1.html#load-package",
+    "title": "ch1.1 the structure of data",
+    "section": "load package",
+    "text": "load package\n\ninclude(\"../utils.jl\")  # import load_csv function \nstudentsurvey_data=Lock5Table(28,\"StudentSurvey\",\"first data demo\",[])\n\nLock5Table(28, \"StudentSurvey\", \"first data demo\", Union{AbstractString, Symbol}[])"
   },
   {
-    "objectID": "references.html",
-    "href": "references.html",
-    "title": "References",
+    "objectID": "books/ch01/ch1.1.html#data-1.1",
+    "href": "books/ch01/ch1.1.html#data-1.1",
+    "title": "ch1.1 the structure of data",
+    "section": "1. Data 1.1",
+    "text": "1. Data 1.1\nStudentSurvey\n\n研究者为了探寻大学新生的长期行为变化情况, 因此才入学时对学生的若干属性进行了统计 数据表中每一行代表一个学生的信息(case), 每一列表示一个属性(variables)\n\n\n1.1 load csv-&gt;dataframe\n\ndf=load_csv(studentsurvey_data.name)\nfirst(df,5)\n\n5×17 DataFrame\n\n\n\nRow\nYear\nSex\nSmoke\nAward\nHigherSAT\nExercise\nTV\nHeight\nWeight\nSiblings\nBirthOrder\nVerbalSAT\nMathSAT\nSAT\nGPA\nPulse\nPiercings\n\n\n\nString15\nString1\nString3\nString7\nString7\nFloat64\nInt64\nInt64\nInt64\nInt64\nInt64\nInt64\nInt64\nInt64\nFloat64\nInt64\nInt64\n\n\n\n\n1\nSenior\nM\nNo\nOlympic\nMath\n10.0\n1\n71\n180\n4\n4\n540\n670\n1210\n3.13\n54\n0\n\n\n2\nSophomore\nF\nYes\nAcademy\nMath\n4.0\n7\n66\n120\n2\n2\n520\n630\n1150\n2.5\n66\n3\n\n\n3\nFirstYear\nM\nNo\nNobel\nMath\n14.0\n5\n72\n208\n2\n1\n550\n560\n1110\n2.55\n130\n0\n\n\n4\nJunior\nM\nNo\nNobel\nMath\n3.0\n1\n63\n110\n1\n1\n490\n630\n1120\n3.1\n78\n0\n\n\n5\nSophomore\nF\nNo\nNobel\nVerbal\n3.0\n3\n65\n150\n1\n1\n720\n450\n1170\n2.7\n40\n6"
+  },
+  {
+    "objectID": "books/ch01/ch1.1.html#data-1.3",
+    "href": "books/ch01/ch1.1.html#data-1.3",
+    "title": "ch1.1 the structure of data",
+    "section": "2. Data 1.3",
+    "text": "2. Data 1.3\n是否存在短跑基因? 参见:Yang et al. (2003)\n\n\n\n\nYang, Nan, Daniel G. MacArthur, Jason P. Gulbin, Allan G. Hahn, Alan H. Beggs, Simon Easteal, and Kathryn N. North. 2003. “ACTN3 Genotype Is Associated with Human Elite Athletic Performance.” American Journal of Human Genetics 73 3: 627–31. https://api.semanticscholar.org/CorpusID:4835793."
+  },
+  {
+    "objectID": "books/ch01/ch1.1-exe.html#load-package",
+    "href": "books/ch01/ch1.1-exe.html#load-package",
+    "title": "ch1.1-exercises",
+    "section": "load package",
+    "text": "load package\n\nusing Distributions, Random,Pipe\ninclude(\"../utils.jl\")  # import load_csv function \nRandom.seed!(3434)\n\nTaskLocalRNG()"
+  },
+  {
+    "objectID": "books/ch01/ch1.1-exe.html#skill-building-1",
+    "href": "books/ch01/ch1.1-exe.html#skill-building-1",
+    "title": "ch1.1-exercises",
+    "section": "1. skill building-1",
+    "text": "1. skill building-1\n1.1-1.6 要求每行记录是什么含义, 变量是定量还是分类变量\n\n可以在理解的基础上试着生成问题的模拟数据\n\n\n1.1 调查城市里居民是否支持环保法案\n\n这里有两种态度, 要么支持, 要么反对, 可以用伯努利分布来模拟 伯努利分布通常的例子是硬币试验, 城市里居民对法案的支持程度一样,可以用一个参数 表示 假设\\(\\theta\\)\n\ndist=Bernoulli(0.6)\ndata1=rand(dist, 100)\n\n# 1 表示支持, 0 表示反对\n\"城市居民对环保法案的态度\"=&gt;data1\n\n\"城市居民对环保法案的态度\" =&gt; Bool[0, 1, 1, 0, 0, 1, 0, 0, 1, 1  …  1, 1, 1, 1, 0, 1, 1, 1, 0, 0]\n\n\n\n1.2 100种股票的百分比变化\n1.3 对一组青少年进行调查, 内容为每天摄食水果和蔬菜的次数是否大于 5 次\n\n\ndist2=Bernoulli(0.4)\ndata2=rand(dist, 100)\n\n# 1 表示5 次以上, 0 表示没有达到 5 次\n\"摄食水果和蔬菜的次数是否大于 5 次\"=&gt;data2\n\n\"摄食水果和蔬菜的次数是否大于 5 次\" =&gt; Bool[1, 0, 0, 1, 1, 1, 0, 0, 0, 1  …  1, 0, 1, 0, 1, 1, 1, 0, 1, 0]\n\n\n\n1.4 测量陈列柜里香蕉直到腐烂变质的天数\n\n用泊松分布来模拟这个数据,假定平均腐烂变质的时间为 5天\n\ndist3=Poisson(5)\nrand(dist3,20)\n\n20-element Vector{Int64}:\n 10\n  3\n  3\n  8\n  5\n  4\n  2\n  7\n  4\n  4\n  4\n  8\n  6\n  2\n  8\n  4\n  7\n  7\n 10\n  4\n\n\n\n1.5 估计横梁抗弯曲力\n\n可以用正态分布来模拟这个数据, 假定最大抗弯曲里为 100N,标准差为 5\n\ndist5=Normal(100,5)\nrand(dist5,10)\n\n10-element Vector{Float64}:\n  97.33605020152098\n 100.97704697669407\n  95.74928190162136\n  99.75389904261289\n  98.91211485543728\n 106.54398676770386\n 106.42754223372522\n  96.78499375758629\n  98.53982704636377\n  96.24623319723902\n\n\n\n1.6 记录全世界国家里识字率是否超过 75% 以互联网人口比例代替识字率, 统计属性不同, 方法相同\n\n allcountry_data=Lock5Table(28,\"AllCountries\",\"Literacy&gt;75%\",[:Internet])\n df=@pipe load_csv(allcountry_data.name)|&gt;select(_,allcountry_data.feature)|&gt;Matrix|&gt;vec\n map(x-&gt;x&gt;75 ? 1 : 0,df)\n\n92-element Vector{Int64}:\n 0\n 0\n 0\n 1\n 0\n 1\n 1\n 1\n 0\n 0\n 0\n 0\n 0\n ⋮\n 1\n 1\n 0\n 1\n 0\n 0\n 0\n 0\n 1\n 0\n 0\n 0\n\n\n2. skill building 2\n1.7-1.10 探索两个变量之间的关系, 可以认为一个变量帮助我们理解和解释另一个变量\n\n\n1.7 肺活量与吸烟年限的关系\n\n\n通常认识吸烟会损伤肺部组织,所以随着吸烟时间的加长,肺活量会变小. 但是这里要 注意, 随着年龄增长, 肺部功能自然会消退, 所以影响肺活量大小的不止一个因素.\n\n\n1.8 施肥量与农作物收成的关系\n\n\n在阈值之内, 施肥量增加,作物收成会增加, 超过阈值时,对作物有害,会降低收成\n\n\n1.9 血液内酒精浓度(BAC)和饮酒量之间的关系\n\n\n随着饮酒量增加, BAC 浓度会增加. 存在因果关系\n\n\n1.10 年份与马拉松成绩\n\n\n随着时间靠近现代, 马拉松成绩越来愈好, 但是这不是因果关系, 引起成绩变好的原因是: 训练水平的提高,和训练方法的改进\n\n1.11\n1.13 童话故事效应\n参见 Hutton et al. (2018) , 通过研究27 个 4 岁大的孩子三种阅读环境下脑部 MRI 活动情况提出观点: 与音频资料和动画相比, 童话故事对刺激脑部活性 的能力最大化, 因此对儿童脑部发育比其他两种方法好\n解释变量为分类变量表示不同的阅读方法 响应变量是脑部连接的活性 共有 27 个实验研究对象\n1.14 女性游戏玩家是否受到性骚扰?\n在英国, 咨询公司问询了 1151 个女性游戏玩家, 结果 40%玩家在游戏过程中收到过淫秽消息, 调查的属性还包括每周的游戏时间,以及游戏角色是否有鲜明的女性特征\n1.15 主动学习与被动学习,哪个更为有效?\n参见 Deslauriers et al. (2019)\n主动学习(Active Learning):学生更多的参与教学活动中(单个或者小组形式) 被动学习(Passive Learning):传统老师教授内容, 学生记笔记\n1.16 蜘蛛的性游戏\n蜘蛛通常会进行假的性行为,但是并没有真正进行交配.\n1.17 激素与鱼的繁殖能力\n\n妇女服用的避孕药还有雌激素,研究发现残留的药物最终会流入到湖泊中,在一项实验中 研究者收集了若干湖泊的水样品, 测量了激素浓度(百万分之一浓度),并记录了鱼卵受精 的百分比.\n\n\n目的是研究水体中激素浓度是否对鱼的繁殖能力相关 变量是激素浓度和卵受精比例\n\n1.18 Fast-Twitch Muscles and Race\n\nACTN3基因突变率在不同种族之间是否有差异?\n\n\n参见 North et al. (1999)\n\n\n研究中发现 20%的高加索(白色人种), 25%亚洲人(黄色人种),1%非洲人(黑色人种) ACTN3基因有突变\n\n1.19\n1.20\n1.21 饮食的跨代效应\n\n父母的经历是否会影响到后代? 喂食含脂肪率为43%(偏高)食物的大鼠后代比正常饮食大鼠的后代更容易患上代谢综合征\n\n1.27\n\n你的鼻子在变大吗? 参见 Sforza et al. (2011) 研究者调查了 859 名参加实验者鼻子的大小, 表面积,高度和宽度,发现 都有不同程度的增加, 同时还记录的参加实验者的性别, 发现男性鼻子各方面增加幅度 大于女性\n\n\n\n\n\n\n\nDeslauriers, Louis, Logan S. McCarty, Kelly Miller, Kristina Callaghan, and Gregory Kestin. 2019. “Measuring Actual Learning Versus Feeling of Learning in Response to Being Actively Engaged in the Classroom.” Proceedings of the National Academy of Sciences of the United States of America 116: 19251–57. https://api.semanticscholar.org/CorpusID:201837506.\n\n\nHutton, John S., Jonathan A. Dudley, Tzipi Horowitz-Kraus, Thomas G. Dewitt, and Scott K Holland. 2018. “Differences in Functional Brain Network Connectivity During Stories Presented in Audio, Illustrated, and Animated Format in Preschool-Age Children.” Brain Imaging and Behavior 14: 130–41. https://api.semanticscholar.org/CorpusID:53110113.\n\n\nNorth, Kathryn N., Nan Yang, Duangrurdee Wattanasirichaigoon, Michelle A. Mills, Simon Easteal, and Alan H. Beggs. 1999. “A Common Nonsense Mutation Results in \\(\\alpha\\)-Actinin-3 Deficiency in the General Population.” Nature Genetics 21: 353–54. https://api.semanticscholar.org/CorpusID:19882092.\n\n\nSforza, Chiarella, Gaia Grandi, Márcio De Menezes, Gianluca Martino Tartaglia, and Virgilio Ferruccio Ferrario. 2011. “Age- and Sex-Related Changes in the Normal Human External Nose.” Forensic Science International 204 1-3: 205.e1–9. https://api.semanticscholar.org/CorpusID:44828961."
+  },
+  {
+    "objectID": "books/ch01/ch1.2.html",
+    "href": "books/ch01/ch1.2.html",
+    "title": "ch1.2 从总体中采样",
     "section": "",
-    "text": "Knuth, Donald E. 1984. “Literate Programming.” Comput.\nJ. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97."
+    "text": "从总体中采样\n\n\n\n总体包含研究者感兴趣的个体, 每个个体有些特定的测量值(属性) 可以通过抽样(sampling) 的方法从总体中获取子集,每个子集称为一个样本(sample)\n在抽样过程中需要注意总体是什么,样本容量(sample size),抽样方法 因为每个样本中的个体都是总体的子集, 样本并不等同于总体"
+  },
+  {
+    "objectID": "books/ch01/ch1.3.html",
+    "href": "books/ch01/ch1.3.html",
+    "title": "ch1.3",
+    "section": "",
+    "text": "header"
   }
 ]

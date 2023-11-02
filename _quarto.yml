@@ -1,17 +1,25 @@
 project:
   type: book
   output-dir: docs
+  
 
 book:
-  title: "julia-book"
-  author: "Norah Jones"
+  title: "locks5notes"
+  author: "math4mads"
   date: "9/30/2023"
+  
   chapters:
     - index.qmd
     - intro.qmd
-    - summary.qmd
-    - references.qmd
-
+    - part: ch1:collecting data
+      chapters: 
+        - ./books/ch01/ch1.1.qmd
+        - ./books/ch01/ch1.1-exe.qmd
+        - ./books/ch01/ch1.2.qmd
+        - ./books/ch01/ch1.3.qmd
+   
+  
+number-depth: 1 
 bibliography: references.bib
 
 format:

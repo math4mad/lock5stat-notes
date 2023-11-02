@@ -1,0 +1,41 @@
+---
+title: "分类变量"
+bibliography: ch02.bib
+---
+## load package
+
+```{julia}
+include("../utils.jl")
+using HypothesisTests,GLMakie,CSV,DataFrames,ScientificTypes,PrettyTables
+using Statistics
+```
+
+## data 2.1  truelove
+
+参见 @Taylor2010TheDO
+
+Pew基金会的组织调查了2625 名 18 岁以上的美国人,问题是:真爱
+是否存在, 记录了三种不同态度(同意,不同意,不知道).  参加调查的试验者是随机选取的,
+通过手机或者座机进行调查(几乎覆盖所有人群)
+
+
+```{julia}
+    df=(let
+    c2=[372,807,34];c3=[363,1005,44]
+    typename=["Agree","Disagree","Don't know","Total"]
+    df=freq_table(DataFrame(Male=c2,Female=c3);typename=typename)
+    end)
+
+    h1 = Highlighter(f= (data, i, j) -> i==4,crayon = crayon"red bold" )
+    h2 = Highlighter(f= (data, i, j) -> j==4,crayon = crayon"blue bold" )
+
+    pretty_table(df, highlighters =(h1,h2));
+
+```
+
+
+![](./imgs/truelove-freqtable.jpg)
+
+
+
+
