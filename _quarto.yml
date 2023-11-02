@@ -11,12 +11,16 @@ book:
   chapters:
     - index.qmd
     - intro.qmd
-    - part: ch1:collecting data
+    - part: ch1:Collecting data
       chapters: 
         - ./books/ch01/ch1.1.qmd
         - ./books/ch01/ch1.1-exe.qmd
         - ./books/ch01/ch1.2.qmd
         - ./books/ch01/ch1.3.qmd
+    - part: ch2:Describing Data
+      chapters: 
+        - ./books/ch02/ch02.qmd
+        - ./books/ch02/ch02.1.qmd
    
   
 number-depth: 1 

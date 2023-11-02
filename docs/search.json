@@ -61,5 +61,19 @@
     "title": "ch1.3",
     "section": "",
     "text": "header"
+  },
+  {
+    "objectID": "books/ch02/ch02.1.html#load-package",
+    "href": "books/ch02/ch02.1.html#load-package",
+    "title": "分类变量",
+    "section": "load package",
+    "text": "load package\n\ninclude(\"../utils.jl\")\nusing HypothesisTests,GLMakie,CSV,DataFrames,ScientificTypes,PrettyTables\nusing Statistics"
+  },
+  {
+    "objectID": "books/ch02/ch02.1.html#data-2.1-truelove",
+    "href": "books/ch02/ch02.1.html#data-2.1-truelove",
+    "title": "分类变量",
+    "section": "data 2.1 truelove",
+    "text": "data 2.1 truelove\n参见 Taylor (2010)\nPew基金会的组织调查了2625 名 18 岁以上的美国人,问题是:真爱 是否存在, 记录了三种不同态度(同意,不同意,不知道). 参加调查的试验者是随机选取的, 通过手机或者座机进行调查(几乎覆盖所有人群)\n\n    df=(let\n    c2=[372,807,34];c3=[363,1005,44]\n    typename=[\"Agree\",\"Disagree\",\"Don't know\",\"Total\"]\n    df=freq_table(DataFrame(Male=c2,Female=c3);typename=typename)\n    end)\n\n    h1 = Highlighter(f= (data, i, j) -&gt; i==4,crayon = crayon\"red bold\" )\n    h2 = Highlighter(f= (data, i, j) -&gt; j==4,crayon = crayon\"blue bold\" )\n\n    pretty_table(df, highlighters =(h1,h2));\n\n┌────────────┬───────┬────────┬───────┐\n│       Type │  Male │ Female │ Total │\n│     String │ Int64 │  Int64 │ Int64 │\n├────────────┼───────┼────────┼───────┤\n│      Agree │   372 │    363 │   735 │\n│   Disagree │   807 │   1005 │  1812 │\n│ Don't know │    34 │     44 │    78 │\n│      Total │  1213 │   1412 │  2625 │\n└────────────┴───────┴────────┴───────┘\n\n\n\n\n\n\n\nTaylor, Paul. 2010. “The Decline of Marriage and Rise of New Families.” In. https://api.semanticscholar.org/CorpusID:158332163."
   }
 ]
